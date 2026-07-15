@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Editor grafico copertina</h1>
+<section class="editor-wrap">
+  <form method="post" class="panel editor-controls" id="editorForm">
+    <label>Titolo<input name="title" id="edTitle" value="Luxury Planner"></label>
+    <label>Sottotitolo<input name="subtitle" id="edSubtitle" value="Premium Digital Download"></label>
+    <label>Nome prodotto<input name="name" value="Luxury Planner"></label>
+    <label>Nicchia<input name="niche" value="Productivity"></label>
+    <label>Categoria<select name="category">{% for c in products %}<option>{{c}}</option>{% endfor %}</select></label>
+    <label>Tipo prodotto<input name="product_type" value="Daily Planner"></label>
+    <label>Font<select name="font">{% for f in fonts %}<option>{{f}}</option>{% endfor %}</select></label>
+    <label>Stile<select name="style">{% for s in styles %}<option>{{s}}</option>{% endfor %}</select></label>
+    <label>Colore testo/sfondo 1<input type="color" name="bg1" id="edBg1" value="#0b0b0d"></label>
+    <label>Gradiente sfondo 2<input type="color" name="bg2" id="edBg2" value="#21160b"></label>
+    <label>Colore secondario<input type="color" name="secondary_color" id="edGold" value="#d4af37"></label>
+    <label>Dimensione titolo<input type="range" min="54" max="120" name="title_size" id="edTitleSize" value="88"></label>
+    <label>Dimensione sottotitolo<input type="range" min="24" max="60" name="subtitle_size" id="edSubtitleSize" value="36"></label>
+    <input type="hidden" name="language" value="Italiano"><input type="hidden" name="format" value="A4 PDF"><input type="hidden" name="pages" value="32"><input type="hidden" name="primary_color" value="#0b0b0d"><input type="hidden" name="marketplace" value="Etsy">
+    <button class="gold" type="submit">Esporta PNG alta qualità</button>
+  </form>
+  <div class="cover-preview" id="coverPreview">
+    <div class="cover-frame"><div class="cover-icons">✦ ◇ ☾ ✧</div><h2 id="pvTitle">Luxury Planner</h2><p id="pvSubtitle">Premium Digital Download</p><div class="cover-lines"><span></span><span></span><span></span></div></div>
+    {% if export %}<a class="gold link" href="{{export}}" download>Scarica copertina esportata</a><img class="exported" src="{{export}}">{% endif %}
+  </div>
+</section>
+{% endblock %}

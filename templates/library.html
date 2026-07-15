@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Libreria prodotti</h1>
+<form class="filters">
+  <input name="q" aria-label="Ricerca per nome" value="{{q}}">
+  <select name="category"><option value="">Tutte le categorie</option>{% for c in products %}<option {% if c==cat %}selected{% endif %}>{{c}}</option>{% endfor %}</select>
+  <select name="marketplace"><option value="">Tutti i marketplace</option>{% for m in marketplaces %}<option {% if m==market %}selected{% endif %}>{{m}}</option>{% endfor %}</select>
+  <button>Filtra</button>
+</form>
+<div class="cards">
+{% for r in rows %}
+  <article class="card"><img src="{{url_for('preview',pid=r.id)}}"><h3>{{r.name}}</h3><p>{{r.product_type}} • {{r.created_at}} • {{r.marketplace}}</p>{% if r.bundle_id %}<span class="tag">{{r.bundle_id}}</span>{% endif %}<div class="actions"><a href="{{url_for('detail',pid=r.id)}}">Anteprima</a><a href="{{url_for('download',pid=r.id)}}">Download ZIP</a><form method="post" action="{{url_for('regen',pid=r.id)}}"><button>Rigenera</button></form><form method="post" action="{{url_for('dup',pid=r.id)}}"><button>Duplica</button></form><form method="post" action="{{url_for('delete',pid=r.id)}}"><button class="danger">Elimina</button></form></div></article>
+{% endfor %}
+</div>
+{% if not rows %}<p class="empty">Nessun prodotto trovato: genera il primo dalla Home.</p>{% endif %}
+{% endblock %}
