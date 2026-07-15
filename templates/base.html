@@ -1,18 +1,1 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DigitalMint AI</title>
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}">
-</head>
-<body>
-  <nav>
-    <a class="brand" href="/">DigitalMint <span>AI</span></a>
-    <div><a href="/">Home</a><a href="/editor">Editor Grafico</a><a href="/library">Libreria</a></div>
-  </nav>
-  {% with m=get_flashed_messages() %}{% if m %}<div class="toast">{{m[0]}}</div>{% endif %}{% endwith %}
-  <main>{% block content %}{% endblock %}</main>
-  <script src="{{ url_for('static',filename='js/app.js') }}"></script>
-</body>
-</html>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DigitalMint AI</title><link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}"></head><body><nav><a class="brand" href="/">DigitalMint <span>AI</span></a><div><a href="/">Home</a><a href="/library">Libreria</a></div></nav>{% with m=get_flashed_messages() %}{% if m %}<div class="toast">{{m[0]}}</div>{% endif %}{% endwith %}<main>{% block content %}{% endblock %}</main><script src="{{ url_for('static',filename='js/app.js') }}"></script></body></html>

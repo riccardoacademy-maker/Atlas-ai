@@ -1,7 +1,1 @@
-{% extends 'base.html' %}
-{% block content %}
-<section class="detail">
-  <img src="{{url_for('preview',pid=r.id)}}">
-  <div class="panel"><p class="eyebrow">{{r.marketplace}}</p><h1>{{r.name}}</h1><p>{{r.product_type}} • {{r.category}} • {{r.pages}} pagine</p>{% if r.bundle_id %}<p><span class="tag">Bundle: {{r.bundle_id}}</span></p>{% endif %}<h2>Titolo SEO</h2><p>{{r.title_seo}}</p><h2>Descrizione SEO</h2><p>{{r.description_seo}}</p><h2>13 Tag</h2><p>{% for t in tags %}<span class="tag">{{t}}</span>{% endfor %}</p><h2>Prezzo consigliato</h2><p class="price">€{{r.price}}</p><a class="gold link" href="{{url_for('download',pid=r.id)}}">Scarica ZIP finale</a></div>
-</section>
-{% endblock %}
+{% extends 'base.html' %}{% block content %}<section class="detail"><img src="{{url_for('preview',pid=r.id)}}"><div class="panel"><p class="eyebrow">{{r.marketplace}}</p><h1>{{r.name}}</h1><p>{{r.product_type}} • {{r.category}} • {{r.pages}} pagine</p><h2>Titolo SEO</h2><p>{{r.title_seo}}</p><h2>Descrizione SEO</h2><p>{{r.description_seo}}</p><h2>13 Tag</h2><p>{% for t in tags %}<span class="tag">{{t}}</span>{% endfor %}</p><h2>Prezzo consigliato</h2><p class="price">€{{r.price}}</p><a class="gold link" href="{{url_for('download',pid=r.id)}}">Scarica ZIP finale</a></div></section>{% endblock %}
